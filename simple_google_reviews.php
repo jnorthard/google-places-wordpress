@@ -11,7 +11,7 @@
 
 /* This plugin would not be possible without the google-places.js code provided by @peledies (https://github.com/peledies/google-places) - please take a moment to thank him for his work. */
 
-class SimpleGoogleReviews {
+class reviews_sgr_SimpleGoogleReviews {
 	private $simple_google_reviews_options;
 
 	public function __construct() {
@@ -197,7 +197,7 @@ class SimpleGoogleReviews {
 
 }
 if ( is_admin() )
-	$simple_google_reviews = new SimpleGoogleReviews();
+	$simple_google_reviews = new reviews_sgr_SimpleGoogleReviews();
 
 // Add [simplegooglereviews] Shortcode
 function simple_google_reviews() {
