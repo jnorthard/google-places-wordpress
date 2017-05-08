@@ -201,9 +201,9 @@ if ( is_admin() )
 
 // Add [simplegooglereviews] Shortcode
 function simple_google_reviews() {
-	wp_enqueue_script('googleplacesapi');
-	wp_enqueue_style('googleplaces');
-	wp_enqueue_script('googleplaces');
+	wp_enqueue_script('reviews_sgr_reviews_sgr_googleplacesapi');
+	wp_enqueue_style('reviews_sgr_reviews_sgr_googleplaces');
+	wp_enqueue_script('reviews_sgr_reviews_sgr_googleplaces');
 
     $result = '<div id="google-reviews"></div>';
     return $result;
@@ -211,19 +211,19 @@ function simple_google_reviews() {
 add_shortcode( 'simplegooglereviews', 'simple_google_reviews' );
 
 // Load scripts and styles
-function googleplaces() {
+function reviews_sgr_reviews_sgr_googleplaces() {
 	$simple_google_reviews_options = get_option( 'simple_google_reviews_option_name' ); // Array of All Options
 	$gapikey = $simple_google_reviews_options['gapikey']; // Google Maps API Key
 	$place_id = $simple_google_reviews_options['place_id']; // Google Place ID
 	$min_rating = $simple_google_reviews_options['min_rating']; // Minimum Rating
 	$num_ratings = $simple_google_reviews_options['num_ratings']; // Number or Ratings to Display
 	$rotate_reviews = $simple_google_reviews_options['rotate_reviews']; // Would you like to rotate the reviews?
-	wp_register_style('googleplaces', plugins_url('google-places.css',__FILE__ ));
-	wp_register_script( 'googleplacesapi', 'https://maps.googleapis.com/maps/api/js?key='.$gapikey.'&v=3.exp&signed_in=true&libraries=places', array('jquery'), null, true );
-	wp_register_script( 'googleplaces', plugins_url('google-places.js',__FILE__ ), array('jquery'), null, true );
+	wp_register_style('reviews_sgr_reviews_sgr_googleplaces', plugins_url('google-places.css',__FILE__ ));
+	wp_register_script( 'reviews_sgr_reviews_sgr_googleplacesapi', 'https://maps.googleapis.com/maps/api/js?key='.$gapikey.'&v=3.exp&signed_in=true&libraries=places', array('jquery'), null, true );
+	wp_register_script( 'reviews_sgr_reviews_sgr_googleplaces', plugins_url('google-places.js',__FILE__ ), array('jquery'), null, true );
 	$inline_js = 'jQuery(document).ready(function() {
-      jQuery("#google-reviews").googlePlaces({placeId: \''.$place_id.'\', render: [\'reviews\'], min_rating: '.$min_rating.', max_rows: '.$num_ratings.', rotateTime: '.$rotate_reviews.'});});';
-	wp_add_inline_script('googleplaces', $inline_js);
+      jQuery("#google-reviews").reviews_sgr_reviews_sgr_googleplaces({placeId: \''.$place_id.'\', render: [\'reviews\'], min_rating: '.$min_rating.', max_rows: '.$num_ratings.', rotateTime: '.$rotate_reviews.'});});';
+	wp_add_inline_script('reviews_sgr_reviews_sgr_googleplaces', $inline_js);
 }
-add_action( 'wp_enqueue_scripts','googleplaces');
+add_action( 'wp_enqueue_scripts','reviews_sgr_reviews_sgr_googleplaces');
 

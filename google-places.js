@@ -1,7 +1,7 @@
 /*  Special thanks to @peledies for this code: https://github.com/peledies/google-places */
 (function($) {
 
-    $.googlePlaces = function(element, options) {
+    $.reviews_sgr_googlePlaces = function(element, options) {
 
         var defaults = {
               placeId: '' // placeId provided by google api documentation
@@ -190,12 +190,12 @@
         
     }
 
-    $.fn.googlePlaces = function(options) {
+    $.fn.reviews_sgr_googlePlaces = function(options) {
 
         return this.each(function() {
-            if (undefined == $(this).data('googlePlaces')) {
-                var plugin = new $.googlePlaces(this, options);
-                $(this).data('googlePlaces', plugin);
+            if (undefined == $(this).data('reviews_sgr_googlePlaces')) {
+                var plugin = new $.reviews_sgr_googlePlaces(this, options);
+                $(this).data('reviews_sgr_googlePlaces', plugin);
             }
         });
 
